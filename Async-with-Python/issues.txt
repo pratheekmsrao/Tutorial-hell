@@ -3,3 +3,8 @@ after incresing the sleep time, it executed successfully
 
 aiohhtp in async_web_scraping also it failed.
 it executed completly but it thrown a RuntimeError: Event loop is closed
+
+in threaded_prod_cons.py its competing, but runtime error
+Fatal Python error: could not acquire lock for <_io.BufferedReader name='<stdin>'> at interpreter shutdown, possibly due to daemon threads
+Python runtime state: finalizing (tstate=0000025CEE1AB8B0)
+
