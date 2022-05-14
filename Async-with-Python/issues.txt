@@ -1,0 +1,5 @@
+Asyncio in producer consumer program crashed.
+after incresing the sleep time, it executed successfully
+
+aiohhtp in async_web_scraping also it failed.
+it executed completly but it thrown a RuntimeError: Event loop is closed
