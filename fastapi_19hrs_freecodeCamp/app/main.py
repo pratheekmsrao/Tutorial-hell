@@ -1,8 +1,9 @@
 import random
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
+from starlette.responses import Response
 
 print("hi")
 
@@ -42,7 +43,7 @@ def delete_post_l(post_id: int):
 #     p.update(post.dict())
 
 
-@app.get("/", status_code=200)
+@app.get("/", status_code=status.HTTP_200_OK)
 def home():
     if random.randint(10, 20) % 2 == 0:
         raise HTTPException(status_code=500, detail="even number")
@@ -54,7 +55,7 @@ def get_posts():
     return {"data": posts}
 
 
-@app.post("/posts")
+@app.post("/posts", status_code=status.HTTP_201_CREATED)
 def create_post(post: Post):
     print(post)
     print(post.dict())
@@ -64,7 +65,7 @@ def create_post(post: Post):
     return {"data": post}
 
 
-@app.put("/posts/{id}")
+@app.put("/posts/{id}", status_code=status.HTTP_201_CREATED)
 def update_post(id: int, post: Post):
     post_d = post.dict()
     print(post)
@@ -75,12 +76,13 @@ def update_post(id: int, post: Post):
     return {"data": find_post(id)}
 
 
-@app.get("/posts/{id}")
+@app.get("/posts/{id}", status_code=status.HTTP_200_OK)
 def get_post(id: int):
     return {"data": find_post(int(id))}
 
 
-@app.delete("/posts/{id}")
+@app.delete("/posts/{id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_post(id: int):
     p = delete_post_l(id)
-    return {"data": find_post(id)}
+    # return {"data": find_post(id)}
+    return Response(status_code=status.HTTP_204_NO_CONTENT)

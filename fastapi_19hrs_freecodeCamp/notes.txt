@@ -1,0 +1,5 @@
+*   when you pass the status code to delete path 'status_code=status.HTTP_204_NO_CONTENT'
+    and you return any data it through error status_code=status.HTTP_204_NO_CONTENT.
+    dont return anything other than status code for status.HTTP_204_NO_CONTENT.
+    just use -> return Response(status_code=status.HTTP_204_NO_CONTENT)
+*
