@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 
 from fastapi_19hrs_freecodeCamp.app import models
 from fastapi_19hrs_freecodeCamp.app.database import engine, get_db
-from fastapi_19hrs_freecodeCamp.app.routers import post, user
+from fastapi_19hrs_freecodeCamp.app.routers import post, user, auth
 
 models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
@@ -47,6 +47,7 @@ except Exception as e:
 
 app.include_router(post.router)
 app.include_router(user.router)
+app.include_router(auth.router)
 
 
 @app.get("/", status_code=status.HTTP_200_OK)
