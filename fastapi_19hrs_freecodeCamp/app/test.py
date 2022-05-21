@@ -10,7 +10,10 @@ def create_post():
     payload = json.dumps(
         {"title": fake.sentence(), "content": fake.text(), "published": True, "rating": 0}
     )
-    headers = {"Content-Type": "application/json"}
+    headers = {
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE2NTMxNTcwMzh9.iSrTy5j_m23sgFBK9KKtZb4n9HsOJrTc_dyig2eHTlk',
+        'Content-Type': 'application/json'
+    }
     response = requests.request("POST", url, headers=headers, data=payload)
     print(response.text)
 
